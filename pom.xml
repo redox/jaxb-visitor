@@ -29,17 +29,6 @@
         <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/trunk/jaxb-visitor/</developerConnection>
         <url>http://jaxb-visitor.googlecode.com/svn/trunk/jaxb-visitor/</url>
     </scm>
-    <distributionManagement>
-        <repository>
-            <id>googlecode.jaxb-visitor.repo</id>
-            <url>dav:https://jaxb-visitor.googlecode.com/svn/maven-repository/</url>
-        </repository>
-        <snapshotRepository>
-            <id>googlecode.jaxb-visitor.snapshotrepo</id>
-            <url>dav:https://jaxb-visitor.googlecode.com/svn/maven-snapshot-repository/</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
     <developers>
         <developer>
             <id>mark</id>
