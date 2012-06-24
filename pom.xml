@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -10,7 +9,7 @@
     <artifactId>jaxb-visitor</artifactId>
     <packaging>jar</packaging>
     <name>JAXB Visitor Plugin</name>
-    <version>1.9-SNAPSHOT</version>
+    <version>1.9</version>
     <description>XJC plugin that adds the Visitor pattern to JAXB generated classes. Generates a simple Visitor
         interface as well as separate Traverser and sample implementations to perform depth first traversals of JAXB
         graphs.
@@ -25,9 +24,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</connection>
-        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</developerConnection>
-        <url>http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</url>
+        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.9</connection>
+        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.9</developerConnection>
+        <url>http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.9</url>
     </scm>
     <developers>
         <developer>
