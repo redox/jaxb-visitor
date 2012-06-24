@@ -25,9 +25,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/trunk/jaxb-visitor/</connection>
-        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/trunk/jaxb-visitor/</developerConnection>
-        <url>http://jaxb-visitor.googlecode.com/svn/trunk/jaxb-visitor/</url>
+        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</connection>
+        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</developerConnection>
+        <url>http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</url>
     </scm>
     <developers>
         <developer>
