@@ -78,7 +78,7 @@ public class CreateDepthFirstTraverserClass extends CodeCreator {
                                 // when we have a wildcard we should use the bounding class.
                                 paramType = paramType._extends();
                             }
-                            if (!paramType.isPrimitive() && traversalTypes.contains(paramType)) {
+                            if (visitable.isAssignableFrom(paramType)) {
                                 JForEach forEach = traverseBlock.forEach(collType, "jaxbElement", JExpr.invoke(beanParam, getter));
                                 forEach.body()._if(JExpr.ref("jaxbElement").ne(JExpr._null()))._then().invoke(JExpr.ref("jaxbElement").invoke("getValue"), "accept").arg(vizParam);
                             }
@@ -133,17 +133,29 @@ public class CreateDepthFirstTraverserClass extends CodeCreator {
 	 * @param traversalTypes
 	 */
 	private boolean isTraversable(JType rawType, Set<JType> traversalTypes) {
-        if (traversalTypes.contains(rawType))
-            return true;
-        if (rawType.isPrimitive())
+        if (rawType.isPrimitive()) {
             return false;
-        JClass clazz = (JClass) rawType;
-        for(JClass arg : clazz.getTypeParameters()) {
-            if (traversalTypes.contains(arg))
-                return true;
         }
-        
-        return false;
+        JClass clazz = (JClass) rawType;
+        if (clazz.isParameterized()) {
+            clazz = clazz.getTypeParameters().get(0);
+            if (clazz.name().startsWith("?")) {
+                // when we have a wildcard we should use the bounding class.
+                clazz = clazz._extends();
+            }
+        }
+        return visitable.isAssignableFrom(clazz);
+//        if (traversalTypes.contains(rawType))
+//            return true;
+//        if (rawType.isPrimitive())
+//            return false;
+//        JClass clazz = (JClass) rawType;
+//        for(JClass arg : clazz.getTypeParameters()) {
+//            if (traversalTypes.contains(arg))
+//                return true;
+//        }
+//
+//        return false;
     }
 
     private static final JType[] NONE = new JType[0];
