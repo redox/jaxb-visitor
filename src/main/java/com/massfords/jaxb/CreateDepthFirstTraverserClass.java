@@ -72,32 +72,37 @@ public class CreateDepthFirstTraverserClass extends CodeCreator {
                         forEach.body().invoke(JExpr.ref("bean"), "accept").arg(vizParam);
                     } else if (collType.name().startsWith("JAXBElement")) {
                         // parameterized type shouldn't be primitive because it can't be visited.
-                        if (collType.isParameterized()) {
-                            JClass paramType = collType.getTypeParameters().get(0);
-                            if (paramType.name().startsWith("?")) {
-                                // when we have a wildcard we should use the bounding class.
-                                paramType = paramType._extends();
-                            }
-                            if (visitable.isAssignableFrom(paramType)) {
-                                JForEach forEach = traverseBlock.forEach(collType, "jaxbElement", JExpr.invoke(beanParam, getter));
-                                forEach.body()._if(JExpr.ref("jaxbElement").ne(JExpr._null()))._then().invoke(JExpr.ref("jaxbElement").invoke("getValue"), "accept").arg(vizParam);
-                            }
-                        } else {
-                            // if the JAXBElement isn't parameterized then treat it as java.lang.Object and test for Visitable interface
+//                        if (collType.isParameterized()) {
+//                            JClass paramType = collType.getTypeParameters().get(0);
+//                            if (paramType.name().startsWith("?")) {
+//                                // when we have a wildcard we should use the bounding class.
+//                                paramType = paramType._extends();
+//                            }
+//                            if (visitable.isAssignableFrom(paramType)) {
+//                                JForEach forEach = traverseBlock.forEach(collType, "jaxbElement", JExpr.invoke(beanParam, getter));
+//                                forEach.body()._if(JExpr.ref("jaxbElement").ne(JExpr._null()))._then().invoke(JExpr.ref("jaxbElement").invoke("getValue"), "accept").arg(vizParam);
+//                            }
+//                        } else {
+//                            // if the JAXBElement isn't parameterized then treat it as java.lang.Object and test for Visitable interface
                             JForEach forEach = traverseBlock.forEach(collType, "obj", JExpr.invoke(beanParam, getter));
                             forEach.body()._if(JExpr.ref("obj")._instanceof(visitable))._then().invoke(JExpr.cast(visitable, JExpr.ref("obj")), "accept").arg(vizParam);
-                        }
+//                        }
                          
                     } else if (collType.fullName().equals("java.lang.Object")) { 
                         JForEach forEach = traverseBlock.forEach(collType, "obj", JExpr.invoke(beanParam, getter));
                         forEach.body()._if(JExpr.ref("obj")._instanceof(visitable))._then().invoke(JExpr.cast(visitable, JExpr.ref("obj")), "accept").arg(vizParam);
                     }
+                } else if (isJAXBElement) { //(isTraversable(rawType, traversalTypes)) {
+                    traverseBlock._if(
+                            JExpr.invoke(beanParam, getter).ne(JExpr._null())
+                            .cand(
+                            JExpr.invoke(beanParam, getter).invoke("getValue")._instanceof(visitable))  )._then()
+                            .invoke(JExpr.cast(visitable, JExpr.invoke(beanParam, getter).invoke("getValue")), "accept").arg(vizParam);
+//                    traverseBlock._if(JExpr.invoke(beanParam, getter).ne(JExpr._null()))._then()
+//                            ._if(JExpr.invoke(beanParam, getter).invoke("getValue")._instanceof(visitable))._then()
+//                            .invoke(JExpr.invoke(beanParam, getter).invoke("getValue"), "accept").arg(vizParam);
                 } else if (isTraversable(rawType, traversalTypes)) {
-                	if (isJAXBElement) {
-                		traverseBlock._if(JExpr.invoke(beanParam, getter).ne(JExpr._null()))._then().invoke(JExpr.invoke(beanParam, getter).invoke("getValue"), "accept").arg(vizParam);
-                	} else {
-                		traverseBlock._if(JExpr.invoke(beanParam, getter).ne(JExpr._null()))._then().invoke(JExpr.invoke(beanParam, getter), "accept").arg(vizParam);
-                	}
+                    traverseBlock._if(JExpr.invoke(beanParam, getter).ne(JExpr._null()))._then().invoke(JExpr.invoke(beanParam, getter), "accept").arg(vizParam);
                 }
             }
         }

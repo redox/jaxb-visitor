@@ -54,7 +54,7 @@ public class GeneratedCodeFixture extends Assert {
         String line = null;
         while ((line = reader.readLine()) != null) {
             if (!line.startsWith("//")) {
-                sb.append(line);
+                sb.append(line).append("\n");
             }
         }
         return sb.toString();
