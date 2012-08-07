@@ -33,9 +33,9 @@ public class DepthFirstTraverserImpl
     }
 
     public void traverse(ChoiceElement aBean, Visitor aVisitor) {
-        for (Object obj: aBean.getRequestOrResponseOrString()) {
-            if (obj instanceof Visitable) {
-                ((Visitable) obj).accept(aVisitor);
+        for (Object bean: aBean.getRequestOrResponseOrString()) {
+            if (bean instanceof Visitable) {
+                ((Visitable) bean).accept(aVisitor);
             }
         }
     }
@@ -65,11 +65,8 @@ public class DepthFirstTraverserImpl
     }
 
     public void traverse(HasJAXBElement aBean, Visitor aVisitor) {
-        if ((aBean.getOptionalAndNillableString()!= null)&&(aBean.getOptionalAndNillableString().getValue() instanceof Visitable)) {
-            ((Visitable) aBean.getOptionalAndNillableString().getValue()).accept(aVisitor);
-        }
-        if ((aBean.getOptionalAndNillableRequest()!= null)&&(aBean.getOptionalAndNillableRequest().getValue() instanceof Visitable)) {
-            ((Visitable) aBean.getOptionalAndNillableRequest().getValue()).accept(aVisitor);
+        if (aBean.getOptionalAndNillableRequest()!= null) {
+            aBean.getOptionalAndNillableRequest().getValue().accept(aVisitor);
         }
     }
 
