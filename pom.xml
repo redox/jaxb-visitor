@@ -9,7 +9,7 @@
     <artifactId>jaxb-visitor</artifactId>
     <packaging>jar</packaging>
     <name>JAXB Visitor Plugin</name>
-    <version>1.12</version>
+    <version>1.13-SNAPSHOT</version>
     <description>XJC plugin that adds the Visitor pattern to JAXB generated classes. Generates a simple Visitor
         interface as well as separate Traverser and sample implementations to perform depth first traversals of JAXB
         graphs.
@@ -24,9 +24,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.12</connection>
-        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.12</developerConnection>
-        <url>http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/tags/jaxb-visitor-1.12</url>
+        <connection>scm:svn:http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</connection>
+        <developerConnection>scm:svn:https://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</developerConnection>
+        <url>http://jaxb-visitor.googlecode.com/svn/jaxb-visitor/trunk</url>
     </scm>
     <developers>
         <developer>
