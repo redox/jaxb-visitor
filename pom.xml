@@ -19,9 +19,9 @@
         </license>
     </licenses>
     <scm>
-		<connection>scm:git:git@github.com:redox/jaxb-visitor.git/tags/redox-jaxb-visitor-1.13</connection>
-		<url>scm:git:git@github.com:redox/jaxb-visitor.git/tags/redox-jaxb-visitor-1.13</url>
-		<developerConnection>scm:git:git@github.com:redox/jaxb-visitor.git/tags/redox-jaxb-visitor-1.13</developerConnection>
+		<connection>scm:git:git@github.com:redox/jaxb-visitor.git</connection>
+		<url>scm:git:git@github.com:redox/jaxb-visitor.git</url>
+		<developerConnection>scm:git:git@github.com:redox/jaxb-visitor.git</developerConnection>
 	</scm>
 	<distributionManagement>
 		<repository>
