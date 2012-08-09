@@ -3,10 +3,11 @@
   <groupId>com.massfords</groupId>
   <artifactId>redox-jaxb-visitor</artifactId>
   <versioning>
-    <release>1.13</release>
+    <release>1.14</release>
     <versions>
       <version>1.13</version>
+      <version>1.14</version>
     </versions>
-    <lastUpdated>20120809211346</lastUpdated>
+    <lastUpdated>20120809212942</lastUpdated>
   </versioning>
 </metadata>
