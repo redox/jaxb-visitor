@@ -23,37 +23,26 @@ public class BaseTransformer<T >
 {
 
 
-    public T transform(ImportedData aBean) {
-    }
+    public abstract T transform(ImportedData aBean);
 
-    public T transform(ImportedType aBean) {
-    }
+    public abstract T transform(ImportedType aBean);
 
-    public T transform(ImportedType.Message aBean) {
-    }
+    public abstract T transform(ImportedType.Message aBean);
 
-    public T transform(ChoiceElement aBean) {
-    }
+    public abstract T transform(ChoiceElement aBean);
 
-    public T transform(ComplexObject aBean) {
-    }
+    public abstract T transform(ComplexObject aBean);
 
-    public T transform(ComplexObject.LocalElement aBean) {
-    }
+    public abstract T transform(ComplexObject.LocalElement aBean);
 
-    public T transform(HasJAXBElement aBean) {
-    }
+    public abstract T transform(HasJAXBElement aBean);
 
-    public T transform(Problem aBean) {
-    }
+    public abstract T transform(Problem aBean);
 
-    public T transform(Recursive aBean) {
-    }
+    public abstract T transform(Recursive aBean);
 
-    public T transform(TSimpleRequest aBean) {
-    }
+    public abstract T transform(TSimpleRequest aBean);
 
-    public T transform(TSimpleResponse aBean) {
-    }
+    public abstract T transform(TSimpleResponse aBean);
 
 }

@@ -32,7 +32,7 @@ public class CreateBaseTransformerClass extends CodeCreator {
         for (ClassOutline classOutline : classes) {
             if (!classOutline.target.isAbstract()) {
                 // add the method to the base vizzy
-                getOutput().method(JMod.PUBLIC, genericType, "transform").param(classOutline.implClass, "aBean");
+                getOutput().method(JMod.ABSTRACT | JMod.PUBLIC, genericType, "transform").param(classOutline.implClass, "aBean");
             }
         }
     }
