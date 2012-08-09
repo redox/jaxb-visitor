@@ -8,21 +8,22 @@ import java.util.Set;
 /**
  * Adds the accept method to the bean.
  * 
- * @author markford
+ * @author utard
  */
-public class AddAcceptMethod {
+public class AddAcceptMethodTransformer {
 
-    public void run(Set<ClassOutline> sorted, JDefinedClass visitor) {
+    public void run(Set<ClassOutline> sorted, JDefinedClass transformer) {
         for (ClassOutline classOutline : sorted) {
             // skip over abstract classes
             if (!classOutline.target.isAbstract()) {
                 // add the accept method to the bean
                 JDefinedClass beanImpl = classOutline.implClass;
-                JMethod acceptMethod = beanImpl.method(JMod.PUBLIC, void.class, "accept");
-                JVar vizParam = acceptMethod.param(visitor, "aVisitor");
+                JMethod acceptMethod = beanImpl.method(JMod.PUBLIC, Object.class, "accept");
+                JTypeVar genericType = acceptMethod.generify("T");
+                acceptMethod.type(genericType);
+                JVar vizParam = acceptMethod.param(transformer.narrow(genericType), "aTransformer");
                 JBlock block = acceptMethod.body();
-                JInvocation vizInvocation = block.invoke(vizParam, "visit");
-                vizInvocation.arg(JExpr._this());
+                block._return(vizParam.invoke("transform").arg(JExpr._this()));
             }
         }
     }

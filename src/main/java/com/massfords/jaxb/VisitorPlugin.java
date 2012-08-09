@@ -75,14 +75,19 @@ public class VisitorPlugin extends Plugin {
             createVisitorInterface.run(sorted);
             JDefinedClass visitor = createVisitorInterface.getOutput();
             
+            // create transformer interface
+            CreateTransformerInterface createTransformerInterface = new CreateTransformerInterface(outline, vizPackage);
+            createTransformerInterface.run(sorted);
+            JDefinedClass transformer = createTransformerInterface.getOutput();
+            
             // create visitable interface and have all the beans implement it
             CreateVisitableInterface createVisitableInterface = new CreateVisitableInterface(visitor, outline, vizPackage);
             createVisitableInterface.run(sorted);
             JDefinedClass visitable = createVisitableInterface.getOutput();
             
             // add accept method to beans
-            AddAcceptMethod addAcceptMethod = new AddAcceptMethod();
-            addAcceptMethod.run(sorted, visitor);
+            new AddAcceptMethodVisitor().run(sorted, visitor);
+            new AddAcceptMethodTransformer().run(sorted, transformer);
             
             // create traverser interface
             CreateTraverserInterface createTraverserInterface = new CreateTraverserInterface(visitor, outline, vizPackage);
@@ -92,6 +97,10 @@ public class VisitorPlugin extends Plugin {
             // create base visitor class
             CreateBaseVisitorClass createBaseVisitorClass = new CreateBaseVisitorClass(visitor, outline, vizPackage);
             createBaseVisitorClass.run(sorted);
+
+            // create base transformer class
+            CreateBaseTransformerClass createBaseTransformerClass = new CreateBaseTransformerClass(transformer, outline, vizPackage);
+            createBaseTransformerClass.run(sorted);
 
             // create default traverser class
             CreateDepthFirstTraverserClass createDepthFirstTraverserClass = new CreateDepthFirstTraverserClass(visitor, traverser, visitable, outline, vizPackage);

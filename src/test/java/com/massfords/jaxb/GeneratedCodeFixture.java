@@ -17,7 +17,9 @@ public class GeneratedCodeFixture extends Assert {
     public void assertAllFiles() throws Exception {
         String[] files = {
                 "DepthFirstTraverserImpl",
+                "BaseTransformer",
                 "BaseVisitor",
+                "Transformer",
                 "Traverser",
                 "TraversingVisitor",
                 "TraversingVisitorProgressMonitor",
