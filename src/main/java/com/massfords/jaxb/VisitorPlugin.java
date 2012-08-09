@@ -98,10 +98,6 @@ public class VisitorPlugin extends Plugin {
             CreateBaseVisitorClass createBaseVisitorClass = new CreateBaseVisitorClass(visitor, outline, vizPackage);
             createBaseVisitorClass.run(sorted);
 
-            // create base transformer class
-            CreateBaseTransformerClass createBaseTransformerClass = new CreateBaseTransformerClass(transformer, outline, vizPackage);
-            createBaseTransformerClass.run(sorted);
-
             // create default traverser class
             CreateDepthFirstTraverserClass createDepthFirstTraverserClass = new CreateDepthFirstTraverserClass(visitor, traverser, visitable, outline, vizPackage);
             createDepthFirstTraverserClass.run(sorted);
