@@ -4,7 +4,7 @@
     <artifactId>redox-jaxb-visitor</artifactId>
     <packaging>jar</packaging>
     <name>JAXB Visitor Plugin</name>
-    <version>1.14-SNAPSHOT</version>
+    <version>1.14</version>
     <description>XJC plugin that adds the Visitor pattern to JAXB generated classes. Generates a simple Visitor
         interface as well as separate Traverser and sample implementations to perform depth first traversals of JAXB
         graphs.
