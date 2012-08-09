@@ -81,7 +81,7 @@ public class VisitorPlugin extends Plugin {
             JDefinedClass transformer = createTransformerInterface.getOutput();
             
             // create visitable interface and have all the beans implement it
-            CreateVisitableInterface createVisitableInterface = new CreateVisitableInterface(visitor, outline, vizPackage);
+            CreateVisitableInterface createVisitableInterface = new CreateVisitableInterface(visitor, transformer, outline, vizPackage);
             createVisitableInterface.run(sorted);
             JDefinedClass visitable = createVisitableInterface.getOutput();
             
